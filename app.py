@@ -19,6 +19,10 @@ def echo():
     text = (data.get("text") or "").strip()
     return jsonify({"reply": (text + "?") if text else "?"}), 200
 
+@app.get("/api/health")
+def health():
+    return jsonify({"status": "ok"}), 200
+
 # Stage 2: proxy to Ollama
 @app.post("/api/chat")
 def chat():
